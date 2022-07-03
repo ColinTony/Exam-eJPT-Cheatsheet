@@ -37,6 +37,8 @@ Ayuda de algunos comandos que pueden utilizarse en el eJPT o en algun CTF.
 # FUZZING
 ## mi herramienta favorita para hacer fuzzing  es wfuzz pero existen otras que podemos utilizar.
     wfuzz -c --hc=404,400 -w <dictionaryFile> http://<IP>/FUZZ
+#### subdominios pordemos usa el -Z en wfuzz
     wfuzz -c --hc=404,400 -Z -w <dictionaryFile> http://<IP>/FUZZ
+#### Herramientas dirsearch , dirb podemos usar tambien gobuster
     dirsearch.py [-u|--url] target [-e|--extensions] extensions [options]
     dirb http://<IP>
