@@ -46,7 +46,15 @@ Ayuda de algunos comandos que pueden utilizarse en el eJPT o en algun CTF.
 ### Sabemos que para buscar vulnerabilidades podemos usar google u tirar de esta  herramienta llamada searchsploit
 #### Busqueda 
     searchsploit <Name>
-#### Inspectionar
+#### Inspeccionar
     searchsploit -x path : example searchsploit -x linux_x86-64/47151.c
 #### copiar exploit
     searchsploit -m path : example searchsploit -m linux_x86-64/47151.c
+### SQLMap
+### Podemos tirar de esta herramienta para las injecciones SQL , pero dejare un pequeño recurso para hacerlo manualmente.
+    sqlmap -u http://<IP> -p parameter
+    sqlmap -u http://<IP>  --data POSTstring -p parameter
+    sqlmap -u http://<IP> --os-shell
+    sqlmap -u http://<IP> --dump
+### Recurso 
+https://cheatsheet.haax.fr/web-pentest/injections/server-side-injections/sql/
