@@ -30,7 +30,7 @@ Ayuda de algunos comandos que pueden utilizarse en el eJPT o en algun CTF.
 #### Nmap Scan Scripts reconocimiento.
     nmap -sC -sV -p<ports> 10.10.10.10 -oN target
 #### Nmap Scan (UDP Quick)
-    nmap -sU -sV 10.10.10.10 
+    nmap -sU -sV <IP> 
 #### Other nmap scan useful during exam
     nmap -sV -Pn -T4 -A -p- -iL hosts.nmap -oN ports.nmap
     nmap --script vuln --script-args=unsafe=1 -iL hosts.nmap
@@ -42,3 +42,11 @@ Ayuda de algunos comandos que pueden utilizarse en el eJPT o en algun CTF.
 #### Herramientas dirsearch , dirb podemos usar tambien gobuster
     dirsearch.py [-u|--url] target [-e|--extensions] extensions [options]
     dirb http://<IP>
+### Buscar exploits
+### Sabemos que para buscar vulnerabilidades podemos usar google u tirar de esta  herramienta llamada searchsploit
+#### Busqueda 
+    searchsploit <Name>
+#### Inspectionar
+    searchsploit -x path : example searchsploit -x linux_x86-64/47151.c
+#### copiar exploit
+    searchsploit -m path : example searchsploit -m linux_x86-64/47151.c
